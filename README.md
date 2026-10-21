@@ -1,77 +1,43 @@
-# Voice Navigation Assistant for Boston Dynamics Spot
+# spot voice navigation ₊˚⊹♡
 
-Voice-controlled autonomous navigation for the Boston Dynamics Spot robot using GraphNav, NVIDIA Jetson, and natural language voice commands.
+voice-controlled autonomous navigation for Boston Dynamics Spot, built with GraphNav, NVIDIA Jetson, and the Spot SDK.
 
-## Overview
+my summer research project at UNC–Chapel Hill! i worked on getting Spot to take spoken directions, match them to places on a saved map, and navigate there.
 
-This project explores natural language interaction for the Boston Dynamics Spot robot. Spoken commands are processed on an NVIDIA Jetson, converted into text, matched to saved GraphNav waypoints, and executed through the Boston Dynamics Spot SDK to autonomously navigate to user-requested destinations.
+## about the project ✧
 
-The current prototype operates on a custom GraphNav map of Sitterson Hall at the University of North Carolina at Chapel Hill. The long-term vision is to develop Spot into an intelligent robotic assistant capable of navigating indoor and outdoor environments through natural language interaction.
+the current prototype uses a custom GraphNav map of Sitterson Hall. commands are processed on an NVIDIA Jetson, converted into text, and matched to saved destinations.
 
----
+the goal is to make asking Spot to go somewhere feel more natural, starting with places like “the vending machines” or “room 014.” eventually, i’d love to expand this beyond Sitterson and have him navigate around campus.
 
-## Features
+## what he can do ♡
 
-### Voice Interface
+| part | what it handles |
+| --- | --- |
+| voice input | speech-to-text processing and hands-free commands |
+| destination matching | connects different names for a place to its saved waypoint |
+| navigation | loads the GraphNav map, localizes Spot, and navigates to the requested waypoint |
+| command validation | checks the requested destination before navigation |
+| direct movement | supports commands like turning and stopping |
+| mapping | uses custom maps with saved waypoints, edges, and named destinations |
 
-- Natural language voice commands
-- Speech-to-text processing
-- Waypoint alias matching
-- Hands-free robot interaction
+## how it works
 
-### Navigation
+a USB microphone picks up the command, and the Jetson converts it to text. the command parser identifies the destination and checks it against saved waypoint names and aliases.
 
-- GraphNav localization
-- Autonomous waypoint navigation
-- Automatic GraphNav map loading
-- Command validation
-- Direct movement commands
+from there, the system loads the GraphNav map, localizes Spot, and sends the navigation request through the Spot SDK.
 
-### Mapping
+## what i built ⋆｡°
 
-- Custom GraphNav maps
-- Waypoint and edge management
-- Named destination database
+my work focused on the backend connecting voice input to navigation:
 
----
+- wrote the command parsing and destination matching logic
+- managed the waypoint and edge data used by GraphNav
+- automated map loading and localization
+- connected speech recognition, command validation, and navigation through the Spot SDK
+- organized the code so new commands and destinations could be added later
 
-## System Architecture
-
-```text
-USB Microphone
-      ↓
-NVIDIA Jetson
-      ↓
-Speech-to-Text
-      ↓
-Command Parser
-      ↓
-Waypoint & Alias Matching
-      ↓
-GraphNav Localization
-      ↓
-Navigation Planner
-      ↓
-Boston Dynamics Spot
-```
-
----
-
-## Engineering Contributions
-
-My work focused on building the backend pipeline that connects voice input to autonomous robot navigation.
-
-Key contributions included:
-
-- Developing the command parsing and destination matching logic.
-- Managing waypoint and edge data used by GraphNav.
-- Automating GraphNav map loading and localization.
-- Building the backend workflow connecting speech recognition, navigation, and the Spot SDK.
-- Designing a modular architecture for future expansion.
-
----
-
-## Example Commands
+## things you can ask him
 
 ```text
 take me to upper lobby
@@ -85,41 +51,27 @@ turn around
 stop
 ```
 
----
+## where i’d like to take this ⊹
 
-## Future Work
+there’s still more i’d like to explore:
 
-Future development includes:
+- navigating longer routes around campus
+- moving between indoor and outdoor spaces
+- exploring Google Maps integration
+- understanding more ways of phrasing a request
+- using context to interpret commands
+- helping with tasks beyond getting from one place to another
 
-- Campus-scale autonomous navigation
-- Indoor-to-outdoor route planning
-- Google Maps integration
-- More intelligent natural language understanding
-- Context-aware navigation
-- Task-oriented robotic assistance
+## about this repo
 
----
+this public repo documents the project and my contributions. **source code isn’t included** because the research code, robot configuration files, GraphNav maps, and lab infrastructure aren’t publicly distributable.
 
-## Repository Notice
+i’m happy to talk through the implementation, design decisions, and challenges along the way!
 
-> **Source code is not included in this public repository.**
->
-> This project was developed within a university robotics research environment and contains research related source code, robot configuration files, GraphNav maps, and infrastructure that are not publicly distributable.
->
-> This repository is intended to document the project's architecture and my engineering contributions. I would be happy to discuss the implementation, design decisions, and technical challenges.
+## research + acknowledgements ♡
 
----
+developed in the **Experimental Engineering Lab at UNC–Chapel Hill**, with support from the **UNC Office for Undergraduate Research** through an **Accelerated Research Award**.
 
-## Research
+thank you to the Experimental Engineering Lab and UNC OUR for supporting this work, and to Boston Dynamics for the Spot SDK and GraphNav tools.
 
-This project is being developed in the **Experimental Engineering Lab** at the **University of North Carolina at Chapel Hill**.
-
-Supported by the **UNC Office for Undergraduate Research (OUR)** through an **Accelerated Research Award**.
-
----
-
-## Acknowledgements
-
-- Experimental Engineering Lab, University of North Carolina at Chapel Hill
-- UNC Office for Undergraduate Research
-- Boston Dynamics for providing the Spot SDK and GraphNav tools
+˚₊‧꒰ა ♡ ໒꒱‧₊˚
